@@ -4,41 +4,35 @@ import Button from 'react-bootstrap/Button'
 
 const ReviewForm = ({ handleChange, handleSubmit, review }) => (
   <Form.Label>
-    Are We a Gem? <br />
+    Leave a review! Are We a Gem? <br /><br />
 
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="Yes">
-        <Form.Label>
+      <Form.Label>
           Hell Yeah!
-          <Form.Control
-            type="radio"
-            name="favorite?"
-            value={true}
-            onChange={handleChange}
-          />
-        </Form.Label><br />
-        <Form.Label>
-          Oh Nah!
-          <Form.Control
-            type="radio"
-            name="favorite?"
-            value={false}
-            onChange={handleChange}
-          />
-        </Form.Label><br />
-      </Form.Group>
-
-      <Form.Group controlId="description">
-        <Form.Label>Any Praise or Feedback?</Form.Label><br />
         <Form.Control
-          type="text"
-          name="description"
-          placeholder="What'd You Think?"
-          value={review.description}
+          type="radio"
+          name="favorited"
+          value={true}
           onChange={handleChange}
         />
-      </Form.Group>
-
+      </Form.Label><br />
+      <Form.Label>
+          Oh Nah!
+        <Form.Control
+          type="radio"
+          name="favorited"
+          value={false}
+          onChange={handleChange}
+        />
+      </Form.Label><br />
+      <Form.Label>Any Praise or Feedback?</Form.Label><br />
+      <Form.Control
+        type="text"
+        name="description"
+        placeholder="What'd You Think?"
+        value={review.description}
+        onChange={handleChange}
+      />
       <Button className="btn btn-primary mt-2" type="submit">
         Submit
       </Button>

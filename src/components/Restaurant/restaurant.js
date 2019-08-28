@@ -1,19 +1,27 @@
 import React, { Component, Fragment } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+
+import CreateReview from '../Review/createReview'
+import RestaurantReviews from '../Review/restaurantReviews'
 
 // import ListGroup from 'react-bootstrap/ListGroup'
 
 class Restaurant extends Component {
-  state = {
-    restaurant: null
+  constructor () {
+    super()
+
+    this.state = {
+      restaurant: null
+    }
   }
 
   async componentDidMount () {
     try {
       const response = await axios(`${apiUrl}/restaurants/${this.props.match.params.id}`)
 
+      console.log('this is response data', response.data)
       this.setState({
         restaurant: response.data.restaurant
       })
@@ -23,6 +31,7 @@ class Restaurant extends Component {
   }
 
   render () {
+    const { user, alert } = this.props
     const { restaurant } = this.state
     // const reviewsJsx = this.state.restaurants.reviews.map(review => (
     //   <ListGroup.Item key={review._id}>
@@ -44,9 +53,11 @@ class Restaurant extends Component {
             <h2>{restaurant.description}</h2>
             <h2>{restaurant.general_location}</h2>
             <h2><a href={restaurant.website}>Visit Us!</a></h2>
-            <Link to={'/create-review'}>
-              <button className="btn btn-primary">Make Review!</button>
-            </Link>
+            <CreateReview user={user} alert={alert} restaurant={restaurant} />
+            <Fragment>
+              <h2>Check out our reviews!</h2>
+              <RestaurantReviews user={user} restaurant={restaurant} alert={alert}/>
+            </Fragment>
           </Fragment>
         )}
       </div>

@@ -18,7 +18,6 @@ class Restaurants extends Component {
     try {
       // await the response from the API call
       const response = await axios(`${apiUrl}/restaurants`)
-      console.log(response)
       // do something with the response
       setTimeout(() => this.setState({ restaurants: response.data.restaurants, isLoading: false }),
         1000)

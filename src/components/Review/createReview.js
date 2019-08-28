@@ -9,16 +9,19 @@ class CreateReview extends Component {
   state = {
     review: {
       favorited: null,
-      description: ''
+      description: '',
+      restaurant: this.props.restaurant._id
     }
   }
 
   handleChange = event => {
-    this.setState({
-      review: {
-        ...this.state.review, [event.target.name]: event.target.value
-      }
-    })
+    console.log(event.target)
+    const updatedField = {
+      [event.target.name]: event.target.value
+    }
+
+    const createdReview = Object.assign(this.state.review, updatedField)
+    this.setState({ review: createdReview })
   }
 
   handleSubmit = event => {

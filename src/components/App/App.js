@@ -11,6 +11,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 
 import Restaurants from '../Restaurant/restaurants'
 import Restaurant from '../Restaurant/restaurant'
+import CreateReview from '../Review/createReview'
 
 class App extends Component {
   constructor () {
@@ -56,6 +57,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/restaurants/:id' render={() => (
             <Restaurant user={user} alert={this.alert} />
+          )} />
+          <AuthenticatedRoute user={user} path='/create-review' render={() => (
+            <CreateReview user={user} alert={this.alert} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />

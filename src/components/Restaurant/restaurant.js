@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-import Button from 'react-bootstrap/Button'
 // import ListGroup from 'react-bootstrap/ListGroup'
 
 class Restaurant extends Component {
@@ -45,7 +44,9 @@ class Restaurant extends Component {
             <h2>{restaurant.description}</h2>
             <h2>{restaurant.general_location}</h2>
             <h2><a href={restaurant.website}>Visit Us!</a></h2>
-            <Button href='#reviews/create'>Leave A Review!</Button>
+            <Link to={'/create-review'}>
+              <button className="btn btn-primary">Make Review!</button>
+            </Link>
           </Fragment>
         )}
       </div>

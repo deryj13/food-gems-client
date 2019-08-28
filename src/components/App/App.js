@@ -9,6 +9,9 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
+import Restaurants from '../Restaurant/restaurants'
+import Restaurant from '../Restaurant/restaurant'
+
 class App extends Component {
   constructor () {
     super()
@@ -47,6 +50,12 @@ class App extends Component {
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/restaurants' render={() => (
+            <Restaurants user={user} alert={this.alert} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/restaurants/:id' render={() => (
+            <Restaurant user={user} alert={this.alert} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />

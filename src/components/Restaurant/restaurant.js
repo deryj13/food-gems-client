@@ -41,7 +41,6 @@ class Restaurant extends Component {
         this.setState({ reviewDeleted: true })
       })
       .then(response => {
-        console.log('da props,', this.props)
         this.props.alert({
           heading: 'Success!!!!!!',
           message: 'You deleted your review!',
@@ -87,7 +86,7 @@ class Restaurant extends Component {
             <h2>{restaurant.general_location}</h2>
             <h2><a href={restaurant.website} target="_blank" rel="noopener noreferrer">Visit Us!</a></h2>
             <CreateReview user={user} alert={alert} restaurant={restaurant} />
-            <ListGroup>
+            <ListGroup><br /><br />
               <h2>Check out our reviews!</h2>
               {restaurantReviewsJsx}
             </ListGroup>

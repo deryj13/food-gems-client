@@ -15,14 +15,12 @@ class updateReview extends Component {
   }
 
   handleChange = event => {
-    console.log(event.target)
     const updatedField = {
       [event.target.name]: event.target.value
     }
 
     const updatedReview = Object.assign(this.state.review, updatedField)
     this.setState({ review: updatedReview })
-    console.log('the props for update ', this.props)
   }
 
   handleSubmit = event => {
@@ -41,7 +39,6 @@ class updateReview extends Component {
         this.setState({ updated: true })
       })
       .then(response => {
-        console.log('update props', this.props)
         this.props.alert({
           head: 'Success!!!',
           message: 'You updated a review',

@@ -16,7 +16,6 @@ class CreateReview extends Component {
   }
 
   handleChange = event => {
-    console.log(event.target)
     const updatedField = {
       [event.target.name]: event.target.value
     }
@@ -38,12 +37,9 @@ class CreateReview extends Component {
       }
     })
       .then(response => {
-        console.log('blah')
-        console.log(response)
         this.setState({ restaurantId: response.data.review.restaurant })
       })
       .then(response => {
-        console.log(this.props)
         this.props.alert({
           head: 'Success!!!',
           message: 'You created a review',

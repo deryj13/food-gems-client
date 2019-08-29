@@ -14,6 +14,7 @@ const ReviewForm = ({ handleChange, handleSubmit, review }) => (
           name="favorited"
           value={true}
           onChange={handleChange}
+          required
         />
       </Form.Label><br />
       <Form.Label>
@@ -23,6 +24,7 @@ const ReviewForm = ({ handleChange, handleSubmit, review }) => (
           name="favorited"
           value={false}
           onChange={handleChange}
+          required
         />
       </Form.Label><br />
       <Form.Label>Any Praise or Feedback?</Form.Label><br />

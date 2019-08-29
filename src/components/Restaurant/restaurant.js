@@ -1,50 +1,86 @@
 import React, { Component, Fragment } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 import CreateReview from '../Review/createReview'
-import RestaurantReviews from '../Review/restaurantReviews'
+import Review from '../Review/review'
+// import RestaurantReviews from '../Review/restaurantReviews'
 
 // import ListGroup from 'react-bootstrap/ListGroup'
 
 class Restaurant extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
-      restaurant: null
+      restaurant: null,
+      reviewDeleted: null
     }
   }
 
   async componentDidMount () {
     try {
       const response = await axios(`${apiUrl}/restaurants/${this.props.match.params.id}`)
-
-      console.log('this is response data', response.data)
-      this.setState({
-        restaurant: response.data.restaurant
-      })
+      this.setState({ restaurant: response.data.restaurant })
     } catch (error) {
       console.error(error)
     }
   }
 
+  handleDelete = (id) => {
+    axios({
+      method: 'DELETE',
+      url: `${apiUrl}/reviews/${id}`,
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
+      .then(response => {
+        this.setState({ reviewDeleted: true })
+      })
+      .then(response => {
+        console.log('da props,', this.props)
+        this.props.alert({
+          heading: 'Success!!!!!!',
+          message: 'You deleted your review!',
+          variant: 'success'
+        })
+      })
+      .catch(console.error)
+  }
+
   render () {
+    if (this.state.reviewDeleted) {
+      return <Redirect to={'/restaurants'}/>
+    }
+    console.log('THIS is the props,', this.props)
     const { user, alert } = this.props
     const { restaurant } = this.state
-    // const reviewsJsx = this.state.restaurants.reviews.map(review => (
-    //   <ListGroup.Item key={review._id}>
-    //     {review.favorited}
-    //     {review.description}
-    //   </ListGroup.Item>
-    // ))
+    console.log('THIS is the restaurant,', restaurant)
+    let restaurantReviewsJsx
+    if (restaurant) {
+      console.log('THESE are the reviews,', restaurant.reviews)
+      const theReviews = restaurant.reviews
 
-    // ** Add under return line, under review button **
-    // <ListGroup>
-    //   {this.state.reviews.length ? reviewsJsx : <li>No Reviews Yet</li>}
-    // </ListGroup>
-
+      if (theReviews.length !== 0) {
+        restaurantReviewsJsx = theReviews.map(review => (
+          <ListGroup.Item key={review._id}>
+            <Review
+              user={user}
+              alert={alert}
+              review={review}
+              restaurant={restaurant}
+              handleDelete={this.handleDelete}
+              handleUpdate={this.handleUpdate}
+            />
+          </ListGroup.Item>
+        ))
+      } else {
+        restaurantReviewsJsx = 'Be the first to leave a review!'
+      }
+    }
     return (
       <div>
         { restaurant && (
@@ -54,10 +90,10 @@ class Restaurant extends Component {
             <h2>{restaurant.general_location}</h2>
             <h2><a href={restaurant.website}>Visit Us!</a></h2>
             <CreateReview user={user} alert={alert} restaurant={restaurant} />
-            <Fragment>
+            <ListGroup>
               <h2>Check out our reviews!</h2>
-              <RestaurantReviews user={user} restaurant={restaurant} alert={alert}/>
-            </Fragment>
+              {restaurantReviewsJsx}
+            </ListGroup>
           </Fragment>
         )}
       </div>

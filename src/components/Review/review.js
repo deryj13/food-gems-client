@@ -9,7 +9,10 @@ const Review = ({ review, user, handleUpdate, handleDelete }) => {
     <p>Review: {review.description}</p>
     {user._id === review.owner
       ? <Fragment>
-        <Button onClick={() => handleDelete(review._id)}>
+        <Button onClick={() => handleUpdate(review._id)}>
+          Update Review!
+        </Button><br /><br />
+        <Button variant="danger" onClick={() => handleDelete(review._id)}>
           Delete Review
         </Button>
       </Fragment>

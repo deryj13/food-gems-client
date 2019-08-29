@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
 import ReviewForm from './reviewForm'
 
-class CreateReview extends Component {
+class UpdateReview extends Component {
   state = {
     review: {
       favorited: null,
       description: '',
       restaurant: this.props.restaurant._id
-    },
-    restaurantId: null
+    }
   }
 
   handleChange = event => {
@@ -25,11 +24,11 @@ class CreateReview extends Component {
     this.setState({ review: createdReview })
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event, id) => {
     event.preventDefault()
     axios({
-      method: 'POST',
-      url: `${apiUrl}/reviews`,
+      method: 'PATCH',
+      url: `${apiUrl}/reviews/${id}`,
       headers: {
         'Authorization': `Bearer ${this.props.user.token}`
       },
@@ -38,29 +37,22 @@ class CreateReview extends Component {
       }
     })
       .then(response => {
-        console.log('blah')
-        console.log(response)
-        this.setState({ restaurantId: response.data.review.restaurant })
-      })
-      .then(response => {
         console.log(this.props)
         this.props.alert({
           head: 'Success!!!',
-          message: 'You created a review',
+          message: 'You edited your review',
           variant: 'success'
         })
+        this.props.history.push(`/reviews/${response.data.review._id}`)
       })
       .catch(console.error)
   }
 
   render () {
-    if (this.state.restaurantId) {
-      return <Redirect to={'/restaurants'}/>
-    }
     return (
       <ReviewForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} review={this.state.review}/>
     )
   }
 }
 
-export default withRouter(CreateReview)
+export default withRouter(UpdateReview)

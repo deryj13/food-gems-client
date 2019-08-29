@@ -12,7 +12,6 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import Restaurants from '../Restaurant/restaurants'
 import Restaurant from '../Restaurant/restaurant'
 import CreateReview from '../Review/createReview'
-import RestaurantReviews from '../Review/restaurantReviews'
 
 class App extends Component {
   constructor () {
@@ -61,9 +60,6 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/create-review' render={() => (
             <CreateReview user={user} alert={this.alert} />
-          )} />
-          <AuthenticatedRoute user={user} path='/restaurant-reviews' render={() => (
-            <RestaurantReviews user={user} alert={this.alert} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />

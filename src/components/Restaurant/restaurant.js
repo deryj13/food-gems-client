@@ -55,13 +55,10 @@ class Restaurant extends Component {
     if (this.state.reviewDeleted) {
       return <Redirect to={'/restaurants'}/>
     }
-    console.log('THIS is the props,', this.props)
     const { user, alert } = this.props
     const { restaurant } = this.state
-    console.log('THIS is the restaurant,', restaurant)
     let restaurantReviewsJsx
     if (restaurant) {
-      console.log('THESE are the reviews,', restaurant.reviews)
       const theReviews = restaurant.reviews
 
       if (theReviews.length !== 0) {
@@ -88,7 +85,7 @@ class Restaurant extends Component {
             <h1>{restaurant.name}</h1>
             <h2>{restaurant.description}</h2>
             <h2>{restaurant.general_location}</h2>
-            <h2><a href={restaurant.website}>Visit Us!</a></h2>
+            <h2><a href={restaurant.website} target="_blank" rel="noopener noreferrer">Visit Us!</a></h2>
             <CreateReview user={user} alert={alert} restaurant={restaurant} />
             <ListGroup>
               <h2>Check out our reviews!</h2>

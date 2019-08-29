@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
 import ReviewForm from './reviewForm'
 
-class UpdateReview extends Component {
+class updateReview extends Component {
   state = {
     review: {
       favorited: null,
-      description: '',
-      restaurant: this.props.restaurant._id
-    }
+      description: ''
+    },
+    updated: false
   }
 
   handleChange = event => {
@@ -20,15 +20,16 @@ class UpdateReview extends Component {
       [event.target.name]: event.target.value
     }
 
-    const createdReview = Object.assign(this.state.review, updatedField)
-    this.setState({ review: createdReview })
+    const updatedReview = Object.assign(this.state.review, updatedField)
+    this.setState({ review: updatedReview })
+    console.log('the props for update ', this.props)
   }
 
-  handleSubmit = (event, id) => {
+  handleSubmit = event => {
     event.preventDefault()
     axios({
       method: 'PATCH',
-      url: `${apiUrl}/reviews/${id}`,
+      url: `${apiUrl}/reviews/${this.props.review._id}`,
       headers: {
         'Authorization': `Bearer ${this.props.user.token}`
       },
@@ -37,22 +38,27 @@ class UpdateReview extends Component {
       }
     })
       .then(response => {
-        console.log(this.props)
+        this.setState({ updated: true })
+      })
+      .then(response => {
+        console.log('update props', this.props)
         this.props.alert({
           head: 'Success!!!',
-          message: 'You edited your review',
+          message: 'You updated a review',
           variant: 'success'
         })
-        this.props.history.push(`/reviews/${response.data.review._id}`)
       })
       .catch(console.error)
   }
 
   render () {
+    if (this.state.updated) {
+      return <Redirect to={'/restaurants'}/>
+    }
     return (
       <ReviewForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} review={this.state.review}/>
     )
   }
 }
 
-export default withRouter(UpdateReview)
+export default withRouter(updateReview)

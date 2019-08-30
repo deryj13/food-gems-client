@@ -1,5 +1,10 @@
 # Food Gems
 
+
+## Screenshots of the App
+![food-gems-restaurant_index](https://i.imgur.com/ldV61Bz.png)
+![food-gems-restaurant_show](https://i.imgur.com/3OMhlGJ.png)
+
 ## Link to Back End Repo
 https://github.com/deryj13/food-gems-backend
 

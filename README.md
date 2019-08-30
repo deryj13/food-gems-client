@@ -1,4 +1,4 @@
-# Pokemon Team Creator
+# Food Gems
 
 ## Link to Back End Repo
 https://github.com/deryj13/food-gems-backend

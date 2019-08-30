@@ -6,9 +6,6 @@ import ListGroup from 'react-bootstrap/ListGroup'
 
 import CreateReview from '../Review/createReview'
 import Review from '../Review/review'
-// import RestaurantReviews from '../Review/restaurantReviews'
-
-// import ListGroup from 'react-bootstrap/ListGroup'
 
 class Restaurant extends Component {
   constructor (props) {

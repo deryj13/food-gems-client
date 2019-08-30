@@ -16,9 +16,7 @@ class Restaurants extends Component {
 
   async componentDidMount () {
     try {
-      // await the response from the API call
       const response = await axios(`${apiUrl}/restaurants`)
-      // do something with the response
       setTimeout(() => this.setState({ restaurants: response.data.restaurants, isLoading: false }),
         1000)
     } catch (error) {

@@ -11,6 +11,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 
 import Restaurants from '../Restaurant/restaurants'
 import Restaurant from '../Restaurant/restaurant'
+import Home from '../Home/home'
 
 class App extends Component {
   constructor () {
@@ -44,7 +45,11 @@ class App extends Component {
             message={alert.message}
           />
         ))}
-        <main className="container">
+        <main className="container-fluid">
+          <Route exact path='/' render={() => (
+            <Home />
+          )}
+          />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />

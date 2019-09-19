@@ -1,5 +1,59 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Marcellus&display=swap');
+
+$basefont: 'Marcellus', serif;
 
 .alert {
   z-index: 10000;
+}
+
+main > .container-fluid {
+  padding: 0;
+  width: 100vw;
+}
+
+.about-me {
+  margin: 2rem;
+  text-align: center;
+}
+
+.head-display {
+  background-image: url('./Images/fancy_restaurant.jpg');
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  text-align: center;
+  padding: 1.5rem;
+  height: 540px;
+  color: white;
+  text-shadow: 0 0 15px black;
+}
+
+.jumbo {
+  background: rgba(43, 41, 46, .5);
+}
+
+.nav-bar {
+  background-color: #240562;
+}
+
+
+
+h1 {
+  font-family: $basefont;
+  font-weight: 650;
+  font-size: 3.75rem;
+}
+
+h6 {
+  font-family: $basefont;
+}
+
+img {
+  border-style: none;
+  height: 50px;
+  width: 75px;
 }

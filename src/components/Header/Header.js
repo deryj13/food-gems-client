@@ -24,9 +24,12 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar variant="dark" expand="md" className="nav-bar">
     <Navbar.Brand href="#">
-      Food-Gems
+      <img
+        src="logo.png"
+        alt="Food-Gems logo"
+      />
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

@@ -1,7 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 
 $basefont: 'Marcellus', serif;
+$subfont: 'Dancing Script', cursive;
 
 .alert {
   z-index: 10000;
@@ -12,16 +14,31 @@ main > .container-fluid {
   width: 100vw;
 }
 
-.about-me {
-  margin: 2rem;
-  text-align: center;
+.about-header {
+  font-family: $subfont;
+  padding: 1.5rem;
 }
 
-.head-display {
+.about-me {
+  background-image: url('./Images/chalkboard.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #d5d8e6;
+  text-align: center;
+  height: 400px;
+}
+
+.about-para {
+  font-family: $basefont;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: center;
+  padding: 1.5rem;
+  width: 500px;
+}
+
+.top-display {
   background-image: url('./Images/fancy_restaurant.jpg');
-  -o-background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -32,15 +49,38 @@ main > .container-fluid {
   text-shadow: 0 0 15px black;
 }
 
+.footer {
+  background-color: #240562;
+  color: #d5d8e6;
+  font-family: $subfont;
+  font-size: 1.0em;
+  justify-content: flex-end;
+}
+
+.footer > p {
+  margin: 0;
+  padding: 0;
+}
+
+.home-diamond {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+}
+
 .jumbo {
   background: rgba(43, 41, 46, .5);
+}
+
+.logo {
+  border-style: none;
+  height: 50px;
+  width: 75px;
 }
 
 .nav-bar {
   background-color: #240562;
 }
-
-
 
 h1 {
   font-family: $basefont;
@@ -50,10 +90,4 @@ h1 {
 
 h6 {
   font-family: $basefont;
-}
-
-img {
-  border-style: none;
-  height: 50px;
-  width: 75px;
 }

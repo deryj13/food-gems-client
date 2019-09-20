@@ -29,6 +29,7 @@ const Header = ({ user }) => (
       <img
         src="logo.png"
         alt="Food-Gems logo"
+        className="logo"
       />
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />

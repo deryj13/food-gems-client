@@ -82,6 +82,14 @@ main > .container-fluid {
   background-color: #240562;
 }
 
+.reastaurants {
+  background-image: url('./Images/chalkboard.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #d5d8e6;
+  text-align: center;
+}
+
 h1 {
   font-family: $basefont;
   font-weight: 650;

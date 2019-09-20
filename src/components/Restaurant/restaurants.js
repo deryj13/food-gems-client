@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import ListGroup from 'react-bootstrap/ListGroup'
@@ -38,9 +38,10 @@ class Restaurants extends Component {
     }
 
     return (
-      <ListGroup>
-        {this.state.restaurants.length ? restaurantsJsx : <li>No restaurants found</li>}
-      </ListGroup>
+      <Fragment className="restaurants">
+        <h2>Restaurants</h2>
+        { restaurantsJsx }
+      </Fragment>
     )
   }
 }

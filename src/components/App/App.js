@@ -47,7 +47,7 @@ class App extends Component {
         ))}
         <main className="container-fluid">
           <Route exact path='/' render={() => (
-            <Home />
+            <Home user={user} />
           )}
           />
           <Route path='/sign-up' render={() => (

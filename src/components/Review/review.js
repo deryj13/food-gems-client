@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 import UpdateReview from './updateReview'
 
 const Review = ({ review, user, handleDelete, alert }) => {
-  console.log(review)
   const reviewJsx =
   <Fragment>
     {review.favorited ? <img src="review-diamond.png" className="review-diamond"/> : <img src="review-coal.png" className="review-coal"/>}

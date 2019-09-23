@@ -37,6 +37,27 @@ main > .container-fluid {
   width: 500px;
 }
 
+.container-fluid {
+  background-image: url('./Images/chalkboard.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #d5d8e6;
+  text-align: center;
+}
+
+.experience {
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.review {
+  background-image: url('./Images/chalkboard.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #d5d8e6;
+  text-align: center;
+}
+
 .top-display {
   background-image: url('./Images/fancy_restaurant.jpg');
   background-repeat: no-repeat;
@@ -82,12 +103,40 @@ main > .container-fluid {
   background-color: #240562;
 }
 
-.reastaurants {
+.restaurant-info {
+  font-family: $basefont;
+}
+
+.restaurant-name {
+  font-family: $subfont;
+}
+
+.restaurants {
   background-image: url('./Images/chalkboard.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   color: #d5d8e6;
   text-align: center;
+}
+
+.review {
+  font-family: $basefont;
+}
+
+.review-description {
+  font-size: 1.3em;
+}
+
+.review-coal {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+}
+
+.review-diamond {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
 }
 
 h1 {

@@ -3,6 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import ListGroup from 'react-bootstrap/ListGroup'
+import Row from 'react-bootstrap/Row'
 
 import CreateReview from '../Review/createReview'
 import Review from '../Review/review'
@@ -59,7 +60,7 @@ class Restaurant extends Component {
 
       if (theReviews.length !== 0) {
         restaurantReviewsJsx = theReviews.map(review => (
-          <ListGroup.Item key={review._id}>
+          <ListGroup.Item key={review._id} className="review">
             <Review
               user={user}
               alert={alert}
@@ -78,15 +79,20 @@ class Restaurant extends Component {
       <div>
         { restaurant && (
           <Fragment>
-            <h1>{restaurant.name}</h1>
-            <h2>{restaurant.description}</h2>
-            <h2>{restaurant.general_location}</h2>
-            <h2><a href={restaurant.website} target="_blank" rel="noopener noreferrer">Visit Us!</a></h2>
+            <h1 className="restaurant-name">{restaurant.name}</h1>
+            <h2 className="restaurant-info">{restaurant.description}</h2>
+            <h2 className="restaurant-info">{restaurant.general_location}</h2>
+            <h2 className="restaurant-info"><a href={restaurant.website} target="_blank" rel="noopener noreferrer">Visit Us!</a></h2>
             <CreateReview user={user} alert={alert} restaurant={restaurant} />
             <ListGroup><br /><br />
-              <h2>Check out our reviews!</h2>
+              <h2 className="restaurant-info">Check out our reviews!</h2>
               {restaurantReviewsJsx}
             </ListGroup>
+            <Row className="footer">
+              <div>
+                <p>All logos made through <a href="https://www.canva.com/tools/logo-maker-q1/?utm_source=google_sem&utm_medium=cpc&utm_campaign=REV_US_EN_CanvaPro_Branded_Tier2_EM&utm_term=REV_US_EN_CanvaPro_Branded_Tier2_Logo%20Maker_EM&gclid=Cj0KCQjwzozsBRCNARIsAEM9kBNbGVvehowA9BnX8vfTes_gyVskudxeJMQTYtsmWKA1fPBQJgMptyIaAqwVEALw_wcB" target="_blank" rel="noopener noreferrer" >Canva</a></p>
+              </div>
+            </Row>
           </Fragment>
         )}
       </div>

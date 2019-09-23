@@ -5,13 +5,14 @@ import Button from 'react-bootstrap/Button'
 import UpdateReview from './updateReview'
 
 const Review = ({ review, user, handleDelete, alert }) => {
+  console.log(review)
   const reviewJsx =
   <Fragment>
-    {review.favorited ? <h3>A Gem!</h3> : <h3>Coal!</h3>}
-    <p>Review: {review.description}</p>
-    <h4>Change of Heart? Edit Below :)</h4>
+    {review.favorited ? <img src="review-diamond.png" className="review-diamond"/> : <img src="review-coal.png" className="review-coal"/>}
+    <p className="review-description">Review: {review.description}</p>
     {user._id === review.owner
       ? <Fragment>
+        <h4>Change of Heart? Edit Below :)</h4>
         <UpdateReview
           review={review}
           user={user}

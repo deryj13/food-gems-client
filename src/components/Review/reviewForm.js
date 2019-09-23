@@ -3,12 +3,12 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const ReviewForm = ({ handleChange, handleSubmit, review }) => (
-  <Form.Label>
-    Leave a review! Are We a Gem? <br /><br />
+  <Form.Label className="review-styling">
+    Let us know what you think!<br /><br />
 
     <Form onSubmit={handleSubmit}>
-      <Form.Label>
-          Hell Yeah!
+      <Form.Label className="experience">
+          Great!
         <Form.Control
           type="radio"
           name="favorited"
@@ -16,9 +16,9 @@ const ReviewForm = ({ handleChange, handleSubmit, review }) => (
           onChange={handleChange}
           required
         />
-      </Form.Label><br />
-      <Form.Label>
-          Oh Nah!
+      </Form.Label>
+      <Form.Label className="experience">
+          Lackluster.
         <Form.Control
           type="radio"
           name="favorited"
